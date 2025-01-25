@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Http\Request;
 
 class ProjectController
 {
-    public function index()
+    public function show($id)
     {
-        $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        $project = Project::findOrFail($id);
+        return view('projects.show', compact('project'));
     }
 }
